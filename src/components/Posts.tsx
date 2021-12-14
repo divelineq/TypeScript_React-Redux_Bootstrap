@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink, useLocation, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import p from './Post.module.css'
 import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
