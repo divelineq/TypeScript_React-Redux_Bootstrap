@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import { addPostAction, addSinglePost } from './actions'
 
 export const fetchPost = () => {
@@ -8,7 +9,7 @@ export const fetchPost = () => {
   }
 }
 
-export const fetchSinglePost = (id: number) => {
+export const fetchSinglePost = (id: any) => {
   return (dispatch: any) => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(response => response.json())

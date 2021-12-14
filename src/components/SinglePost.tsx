@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { fetchSinglePost } from './actions/asyncAction'
 import s from './SinglePost.module.css'
 import UpdatePost from './UpdatePost'
@@ -9,10 +9,12 @@ export default function SinglePost() {
   const dispatch = useDispatch()
   const singlePost = useSelector((state: any) => state.singlePost)
   const url = window.location.pathname.split('').reverse()
+  const id: any = useParams()
+  console.log(id)
   const firstElement: any = url.shift()
 
   useEffect(() => {
-    dispatch(fetchSinglePost(firstElement))
+    dispatch(fetchSinglePost(id.id))
   }, [])
 
   return (

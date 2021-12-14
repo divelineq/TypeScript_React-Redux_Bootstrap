@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
 import p from './Post.module.css'
 import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
@@ -7,6 +7,7 @@ import { addIdPost } from './actions/actions'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
+
   return (
     <div>
       <div className={p.post}>
