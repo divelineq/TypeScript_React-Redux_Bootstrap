@@ -1,0 +1,16 @@
+.form {
+  padding-top: 30px;
+}
+
+.inputs {
+  display: grid;
+}
+
+.input {
+  margin: 0;
+}
+
+.label {
+  margin: 0;
+  display: block;
+}
