@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { fetchSinglePost } from './actions/asyncAction'
 import s from './SinglePost.module.css'
 import UpdatePost from './UpdatePost'
 
 export default function SinglePost() {
+  const dispatch = useDispatch()
   const singlePost = useSelector((state: any) => state.singlePost)
+  const url = window.location.pathname
+  const fullUrl = url.split('').reverse()
+  const firstElement: any = fullUrl.shift()
+
+  useEffect(() => {
+    dispatch(fetchSinglePost(firstElement))
+  }, [])
 
   return (
     <div className={s.post}>

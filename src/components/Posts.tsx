@@ -3,14 +3,10 @@ import { NavLink } from 'react-router-dom'
 import p from './Post.module.css'
 import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
-import { addSinglePost } from './redux/redux'
+import { addIdPost } from './redux/redux'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
-
-  const getPost = (e: any) => {
-    dispatch(addSinglePost(e))
-  }
 
   return (
     <div>
@@ -19,7 +15,7 @@ export default function Posts({ post }: any) {
           <div className={p.postItem}>
             <h4 className={p.h4}>
               <NavLink
-                onClick={() => getPost(post)}
+                onClick={() => dispatch(addIdPost(post.id))}
                 to={`/singlePost/${post.id}`}
               >
                 Пост номер: {post.id}

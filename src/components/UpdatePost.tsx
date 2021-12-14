@@ -3,8 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import u from './UpdatePost.module.css'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { addSinglePost, addUpdateSinglePost, initialState } from './redux/redux'
-initialState
+import { addSinglePost, addUpdateSinglePost } from './redux/redux'
 
 export default function UpdatePost() {
   const dispatch = useDispatch()
