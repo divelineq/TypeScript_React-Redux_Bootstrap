@@ -1,5 +1,4 @@
-import { addPostAction } from '../redux/redux'
-import { addSinglePost } from '../redux/redux'
+import { addPostAction, addSinglePost } from './actions'
 
 export const fetchPost = () => {
   return (dispatch: any) => {

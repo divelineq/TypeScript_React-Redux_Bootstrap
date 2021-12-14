@@ -6,6 +6,7 @@ import Posts from './Posts'
 import { Routes, Route, Link } from 'react-router-dom'
 import StartPage from './StartPage'
 import SinglePost from './SinglePost'
+import NewPost from './NewPost'
 
 function App() {
   const dispatch = useDispatch()
@@ -35,6 +36,7 @@ function App() {
           <Route path='/posts' element={<Posts post={currentPost} />} />
           <Route path={`/singlePost/:id`} element={<SinglePost />} />
         </Routes>
+        <NewPost />
       </div>
     </div>
   )

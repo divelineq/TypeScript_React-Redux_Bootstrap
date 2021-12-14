@@ -8,9 +8,8 @@ import UpdatePost from './UpdatePost'
 export default function SinglePost() {
   const dispatch = useDispatch()
   const singlePost = useSelector((state: any) => state.singlePost)
-  const url = window.location.pathname
-  const fullUrl = url.split('').reverse()
-  const firstElement: any = fullUrl.shift()
+  const url = window.location.pathname.split('').reverse()
+  const firstElement: any = url.shift()
 
   useEffect(() => {
     dispatch(fetchSinglePost(firstElement))

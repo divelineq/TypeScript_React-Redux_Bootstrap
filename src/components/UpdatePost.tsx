@@ -1,21 +1,17 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap'
 import u from './UpdatePost.module.css'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { addSinglePost, addUpdateSinglePost } from './redux/redux'
+import { useDispatch } from 'react-redux'
+import { addSinglePost } from './actions/actions'
+import { Button } from 'react-bootstrap'
 
 export default function UpdatePost() {
   const dispatch = useDispatch()
-  const updateSinglePost = useSelector((state: any) => state.updateSinglePost)
   const { register, handleSubmit } = useForm()
 
   const onSubmit = (data: any) => {
     let jsonSubmitPost = data
-    console.log(updateSinglePost)
-    dispatch(addUpdateSinglePost(jsonSubmitPost))
-    dispatch(addSinglePost(updateSinglePost))
-    console.log(updateSinglePost)
+    dispatch(addSinglePost(jsonSubmitPost))
   }
 
   return (
@@ -24,21 +20,45 @@ export default function UpdatePost() {
         <label className={u.label} htmlFor=''>
           Номер
         </label>
-        <input className={u.input} type='text' {...register('id')} />
+        <input
+          className={u.input}
+          type='text'
+          {...register('id', { required: true })}
+        />
       </div>
       <div>
         <label className={u.label} htmlFor=''>
           Заголовок
         </label>
-        <input className={u.input} type='text' {...register('title')} />
+        <input
+          className={u.input}
+          type='text'
+          {...register('title', { required: true })}
+        />
       </div>
       <div>
         <label className={u.label} htmlFor=''>
           Текст
         </label>
-        <input className={u.input} type='text' {...register('body')} />
+        <input
+          className={u.input}
+          type='text'
+          {...register('body', { required: true })}
+        />
       </div>
-      <input type='submit' />
+      <div>
+        <label className={u.label} htmlFor=''>
+          Номер пользователя
+        </label>
+        <input
+          className={u.input}
+          type='text'
+          {...register('userId', { required: true })}
+        />
+      </div>
+      <Button className={u.button} variant='primary' type='submit'>
+        Изменить пост
+      </Button>
     </form>
   )
 }

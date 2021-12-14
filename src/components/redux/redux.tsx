@@ -6,6 +6,7 @@ interface initialStateType {
   singlePost?: any
   updateSinglePost: any
   idPost: any
+  newPost: any
 }
 
 export const initialState: initialStateType = {
@@ -15,6 +16,7 @@ export const initialState: initialStateType = {
   singlePost: {},
   updateSinglePost: {},
   idPost: 0,
+  newPost: {},
 }
 
 export const reducer: any = (state = initialState, action: any) => {
@@ -29,20 +31,11 @@ export const reducer: any = (state = initialState, action: any) => {
       return { ...state, updateSinglePost: action.payload }
     case 'ID_POST':
       return { ...state, idPost: action.payload }
+    case 'NEW_POST':
+      return { ...state, post: [action.payload, ...state.post] }
+    case 'DELETE':
+      return {}
     default:
       return state
   }
 }
-
-export const addSinglePost = (payload: any) => ({
-  type: 'SINGLE_POST_ID',
-  payload,
-})
-export const addPostAction = (payload: any) => ({ type: 'ADD_POST', payload })
-
-export const addUpdateSinglePost = (payload: any) => ({
-  type: 'UPDATE_SINGLE_POST',
-  payload,
-})
-
-export const addIdPost = (payload: any) => ({ type: 'ID_POST', payload })
