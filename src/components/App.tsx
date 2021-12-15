@@ -32,7 +32,7 @@ function App() {
             <Nav className='me-auto'>
               <Nav.Link>
                 <Link className={a.start} to='/'>
-                  Начало
+                  Главная
                 </Link>
               </Nav.Link>
               <Nav.Link>
