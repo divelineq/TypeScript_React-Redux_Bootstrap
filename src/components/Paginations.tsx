@@ -6,9 +6,16 @@ import { paginate } from './actions/actions'
 
 const Paginations = () => {
   const dispatch = useDispatch()
+  const post = useSelector((state: any) => state.post)
   const postPage = useSelector((state: any) => state.postPage)
+  const postPerPage = useSelector((state: any) => state.postPerPage)
+
   let items: Array<any> = []
-  for (let number = 1; number <= 10; number++) {
+  for (
+    let number = 1;
+    number <= Math.ceil(post.length / postPerPage);
+    number++
+  ) {
     items.push(
       <Pagination.Item
         onClick={() => dispatch(paginate(number))}

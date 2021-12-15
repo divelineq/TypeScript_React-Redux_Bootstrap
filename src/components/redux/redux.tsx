@@ -1,3 +1,11 @@
+export const ADD_POST = 'ADD_POST',
+  CURRENT_PAGE = 'CURRENT_PAGE',
+  SINGLE_POST_ID = 'SINGLE_POST_ID',
+  UPDATE_SINGLE_POST = 'UPDATE_SINGLE_POST',
+  ID_POST = 'ID_POST',
+  NEW_POST = 'NEW_POST',
+  DELETE = 'DELETE'
+
 interface initialStateType {
   post: Array<any>
   payload?: any
@@ -19,20 +27,22 @@ export const initialState: initialStateType = {
   newPost: {},
 }
 
-export const reducer: any = (state = initialState, action: any) => {
+export const reducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case 'ADD_POST':
+    case ADD_POST:
       return { ...state, post: [...state.post, ...action.payload] }
-    case 'CURRENT_PAGE':
+    case CURRENT_PAGE:
       return { ...state, postPage: action.payload }
-    case 'SINGLE_POST_ID':
+    case SINGLE_POST_ID:
       return { ...state, singlePost: action.payload }
-    case 'UPDATE_SINGLE_POST':
+    case UPDATE_SINGLE_POST:
       return { ...state, updateSinglePost: action.payload }
-    case 'ID_POST':
+    case ID_POST:
       return { ...state, idPost: action.payload }
-    case 'NEW_POST':
+    case NEW_POST:
       return { ...state, post: [action.payload, ...state.post] }
+    case DELETE:
+      return { ...state, post: action.payload }
     default:
       return state
   }

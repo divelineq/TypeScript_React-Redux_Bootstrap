@@ -47,7 +47,7 @@ function App() {
       <div>
         <Routes>
           <Route path='/' element={<StartPage />} />
-          <Route path='/posts' element={<Posts post={currentPost} />} />
+          <Route path='/posts' element={<Posts currentPost={currentPost} />} />
           <Route path={`/singlePost/:id`} element={<SinglePost />} />
         </Routes>
       </div>

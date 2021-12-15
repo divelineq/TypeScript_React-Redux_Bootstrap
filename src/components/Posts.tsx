@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import p from './Post.module.css'
 import Paginations from './Paginations'
-import { useDispatch } from 'react-redux'
-import { addIdPost, addNewPost } from './actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { addIdPost, addNewPost, deletePost } from './actions/actions'
 import { Button, Card, Col, Container, Modal, Row, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 
-export default function Posts({ post }: any) {
+export default function Posts({ currentPost }: any) {
   const dispatch = useDispatch()
+  const post = useSelector((state: any) => state.post)
   const { register, handleSubmit } = useForm()
   const onSubmit = (data: any) => {
     dispatch(addNewPost(data))
@@ -17,6 +18,14 @@ export default function Posts({ post }: any) {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+
+  const deleteItem = (id: any) => {
+    const indx = post.findIndex((el: any) => el.id === id)
+    const before = post.slice(0, indx)
+    const after = post.slice(indx + 1)
+    const newArray = [...before, ...after]
+    dispatch(deletePost(newArray))
+  }
 
   return (
     <>
@@ -28,10 +37,9 @@ export default function Posts({ post }: any) {
         >
           Добавить новый пост
         </Button>
-        <Button variant='danger'>Удалить первый пост</Button>
       </Container>
       <Container style={{ margin: '0px' }} className={p.post}>
-        {post.map((post: any) => (
+        {currentPost.map((post: any) => (
           <Container>
             <Row>
               <Col>
@@ -83,7 +91,12 @@ export default function Posts({ post }: any) {
                     >
                       <Button variant='primary'>Посмотреть</Button>
                     </NavLink>
-                    <Button variant='danger'>Удалить</Button>
+                    <Button
+                      onClick={() => deleteItem(post.id)}
+                      variant='danger'
+                    >
+                      Удалить
+                    </Button>
                   </Container>
                 </Card>
               </Col>
