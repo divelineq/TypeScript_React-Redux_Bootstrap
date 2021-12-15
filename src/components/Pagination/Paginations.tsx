@@ -2,7 +2,7 @@ import React from 'react'
 import pag from './Paginations.module.css'
 import Pagination from 'react-bootstrap/Pagination'
 import { useDispatch, useSelector } from 'react-redux'
-import { paginate } from './actions/actions'
+import { paginate } from './../redux/actions/actions'
 
 const Paginations = () => {
   const dispatch = useDispatch()

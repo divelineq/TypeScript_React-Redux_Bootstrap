@@ -1,6 +1,0 @@
-import React, { useState } from 'react'
-import u from './UpdatePost.module.css'
-import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { addSinglePost } from './actions/actions'
-import { Button, Form, Modal } from 'react-bootstrap'

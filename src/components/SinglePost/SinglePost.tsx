@@ -3,8 +3,8 @@ import { Button, Card, Col, Container, Row, Form, Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { addSinglePost } from './actions/actions'
-import { fetchSinglePost } from './actions/asyncAction'
+import { addSinglePost } from '../redux/actions/actions'
+import { fetchSinglePost } from '../redux/actions/asyncAction'
 import s from './SinglePost.module.css'
 
 export default function SinglePost() {

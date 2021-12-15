@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import p from './Post.module.css'
-import Paginations from './Paginations'
+import Paginations from '../Pagination/Paginations'
 import { useDispatch, useSelector } from 'react-redux'
-import { addIdPost, addNewPost, deletePost } from './actions/actions'
+import { addIdPost, addNewPost, deletePost } from '../redux/actions/actions'
 import { Button, Card, Col, Container, Modal, Row, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 

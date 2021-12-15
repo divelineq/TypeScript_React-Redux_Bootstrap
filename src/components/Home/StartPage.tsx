@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Carousel } from 'react-bootstrap'
-import './StartPage.module.css'
 export default function StartPage() {
   const [index, setIndex] = useState(0)
   const handleSelect = (selectedIndex: any, e: any) => {
@@ -12,7 +11,7 @@ export default function StartPage() {
       <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
-          src='https://mobimg.b-cdn.net/v3/fetch/53/53cbad6d18496d8e689ee4b170ec0712.jpeg'
+          src='https://img2.goodfon.ru/original/1920x1080/6/a4/peyzazh-zarevo-ozero-mostik.jpg'
           alt='First slide'
         />
         <Carousel.Caption>
@@ -23,7 +22,7 @@ export default function StartPage() {
       <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
-          src='https://mobimg.b-cdn.net/v3/fetch/3e/3ea231d4dbb548693bb20128cc65ef6d.jpeg'
+          src='https://images.wallpaperscraft.ru/image/single/more_zakat_gorizont_nebo_119443_1920x1080.jpg'
           alt='Second slide'
         />
         <Carousel.Caption>
@@ -34,7 +33,7 @@ export default function StartPage() {
       <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
-          src='https://get.pxhere.com/photo/beach-sea-coast-rock-ocean-horizon-sunrise-sunset-morning-wave-dawn-cliff-dusk-evening-reflection-bay-terrain-cape-wind-wave-1406540.jpg'
+          src='https://wallpapers777.com/wallpapers/big/background_zakat_reka_oblaka_1171271_pic_image_wallpaper_big_1920x1080.jpg'
           alt='Third slide'
         />
         <Carousel.Caption>

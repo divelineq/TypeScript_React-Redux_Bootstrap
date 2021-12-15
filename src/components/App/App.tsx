@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import a from './App.module.css'
-import { fetchPost } from './actions/asyncAction'
-import Posts from './Posts'
+import Posts from '../Posts/Posts'
 import { Routes, Route, Link } from 'react-router-dom'
-import StartPage from './StartPage'
-import SinglePost from './SinglePost'
+import StartPage from '../Home/StartPage'
+import SinglePost from '../SinglePost/SinglePost'
 import { Container, Nav, Navbar } from 'react-bootstrap'
+import { fetchPost } from './../redux/actions/asyncAction'
 
 function App() {
   const dispatch = useDispatch()

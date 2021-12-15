@@ -6,7 +6,7 @@ import {
   NEW_POST,
   SINGLE_POST_ID,
   UPDATE_SINGLE_POST,
-} from '../redux/redux'
+} from '../reducer'
 
 export const addSinglePost = (payload: any) => ({
   type: SINGLE_POST_ID,

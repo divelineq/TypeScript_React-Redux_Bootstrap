@@ -27,7 +27,7 @@ export const initialState: initialStateType = {
   newPost: {},
 }
 
-export const reducer = (state = initialState, action: any) => {
+export const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_POST:
       return { ...state, post: [...state.post, ...action.payload] }
