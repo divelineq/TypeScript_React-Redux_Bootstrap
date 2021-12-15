@@ -4,6 +4,7 @@ import p from './Post.module.css'
 import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
 import { addIdPost } from './actions/actions'
+import NewPost from './NewPost'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
@@ -28,6 +29,9 @@ export default function Posts({ post }: any) {
       </div>
       <div>
         <Paginations />
+      </div>
+      <div>
+        <NewPost />
       </div>
     </div>
   )
