@@ -56,9 +56,6 @@ export default function UpdatePost() {
           {...register('userId', { required: true })}
         />
       </div>
-      <Button className={u.button} variant='primary' type='submit'>
-        Изменить пост
-      </Button>
     </form>
   )
 }

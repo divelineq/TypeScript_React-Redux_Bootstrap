@@ -5,14 +5,14 @@ import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
 import { addIdPost } from './actions/actions'
 import NewPost from './NewPost'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row, ButtonGroup } from 'react-bootstrap'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
 
   return (
-    <div>
-      <div className={p.post}>
+    <>
+      <Container style={{ margin: '0px' }} className={p.post}>
         {post.map((post: any) => (
           <Container>
             <Row>
@@ -20,7 +20,7 @@ export default function Posts({ post }: any) {
                 <Card
                   style={{
                     width: '280px',
-                    minHeight: '370px',
+                    minHeight: '400px',
                   }}
                 >
                   <Card.Body>
@@ -32,28 +32,42 @@ export default function Posts({ post }: any) {
                         minHeight: '40px',
                       }}
                     >
-                      <NavLink
-                        style={{ textDecoration: 'none' }}
-                        onClick={() => dispatch(addIdPost(post.id))}
-                        to={`/singlePost/${post.id}`}
-                      >
-                        Пост номер: {post.id}
-                      </NavLink>
+                      Пост номер: {post.id}
                     </Card.Title>
                     <Card.Text
-                      style={{ textAlign: 'center', fontWeight: '600' }}
+                      style={{
+                        textAlign: 'center',
+                        fontWeight: '600',
+                        color: 'black',
+                      }}
                     >
                       {post.title}
                     </Card.Text>
-                    <Card.Text>{post.body}</Card.Text>
+                    <Card.Text style={{ color: 'black' }}>
+                      {post.body}
+                    </Card.Text>
                   </Card.Body>
-                  <Button style={{ margin: '5px' }}>Удалить пост</Button>
+                  <ButtonGroup
+                    style={{ padding: '5px' }}
+                    aria-label='Basic example'
+                  >
+                    <Button variant='primary'>
+                      <NavLink
+                        style={{ textDecoration: 'none', color: 'white' }}
+                        onClick={() => dispatch(addIdPost(post.id))}
+                        to={`/singlePost/${post.id}`}
+                      >
+                        Посмотреть
+                      </NavLink>
+                    </Button>
+                    <Button variant='danger'>Удалить</Button>
+                  </ButtonGroup>
                 </Card>
               </Col>
             </Row>
           </Container>
         ))}
-      </div>
+      </Container>
       <div></div>
       <div>
         <Paginations />
@@ -61,6 +75,6 @@ export default function Posts({ post }: any) {
       <div>
         <NewPost />
       </div>
-    </div>
+    </>
   )
 }

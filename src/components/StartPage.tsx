@@ -9,7 +9,7 @@ export default function StartPage() {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item style={{ height: '792px' }}>
+      <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
           src='https://mobimg.b-cdn.net/v3/fetch/53/53cbad6d18496d8e689ee4b170ec0712.jpeg'
@@ -20,10 +20,10 @@ export default function StartPage() {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item style={{ height: '792px' }}>
+      <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
-          src='https://mobimg.b-cdn.net/v3/fetch/53/53cbad6d18496d8e689ee4b170ec0712.jpeg'
+          src='https://mobimg.b-cdn.net/v3/fetch/3e/3ea231d4dbb548693bb20128cc65ef6d.jpeg'
           alt='Second slide'
         />
         <Carousel.Caption>
@@ -31,10 +31,10 @@ export default function StartPage() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item style={{ height: '792px' }}>
+      <Carousel.Item interval={3000} style={{ height: '792px' }}>
         <img
           className='d-block w-100'
-          src='https://mobimg.b-cdn.net/v3/fetch/53/53cbad6d18496d8e689ee4b170ec0712.jpeg'
+          src='https://get.pxhere.com/photo/beach-sea-coast-rock-ocean-horizon-sunrise-sunset-morning-wave-dawn-cliff-dusk-evening-reflection-bay-terrain-cape-wind-wave-1406540.jpg'
           alt='Third slide'
         />
         <Carousel.Caption>

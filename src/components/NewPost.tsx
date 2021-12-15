@@ -50,11 +50,6 @@ export default function NewPost() {
           Добавить новый пост
         </Button>
       </form>
-      <div className={u.divDelete}>
-        <Button className={u.delete} variant='danger'>
-          Удалить пост
-        </Button>
-      </div>
     </div>
   )
 }

@@ -44,6 +44,12 @@ export default function SinglePost() {
                 </Card.Text>
                 <Card.Text>{singlePost.body}</Card.Text>
                 <Card.Text>Номер пользователя: {singlePost.userId}</Card.Text>
+                <Button
+                  style={{ padding: '5px', width: '246px' }}
+                  variant='primary'
+                >
+                  Изменить
+                </Button>
               </Card.Body>
             </Card>
           </Col>
