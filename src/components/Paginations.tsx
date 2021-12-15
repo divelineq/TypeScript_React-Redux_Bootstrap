@@ -9,7 +9,6 @@ const Paginations = () => {
   const postPage = useSelector((state: any) => state.postPage)
   let items: Array<any> = []
   for (let number = 1; number <= 10; number++) {
-    let active: number = 1
     items.push(
       <Pagination.Item
         onClick={() => dispatch(paginate(number))}

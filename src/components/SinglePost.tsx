@@ -9,22 +9,17 @@ import s from './SinglePost.module.css'
 
 export default function SinglePost() {
   const dispatch = useDispatch()
+  const { register, handleSubmit } = useForm()
   const singlePost = useSelector((state: any) => state.singlePost)
   const id: any = useParams()
-
   useEffect(() => {
     dispatch(fetchSinglePost(id.id))
   }, [])
-  const { register, handleSubmit } = useForm()
-
   const onSubmit = (data: any) => {
     let jsonSubmitPost = data
     dispatch(addSinglePost(jsonSubmitPost))
-    console.log(data)
   }
-
   const [show, setShow] = useState(false)
-
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
@@ -104,6 +99,14 @@ export default function SinglePost() {
                   type='text'
                   placeholder='Введите новый текст'
                   {...register('body', { required: true })}
+                ></Form.Control>
+              </Form.Group>
+              <Form.Group style={{ marginTop: '5px' }}>
+                <Form.Label>Изменить id пользователя</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Введите новый id пользователя'
+                  {...register('userId', { required: true })}
                 ></Form.Control>
               </Form.Group>
               <Button

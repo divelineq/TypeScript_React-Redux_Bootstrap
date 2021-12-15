@@ -1,17 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import p from './Post.module.css'
 import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
-import { addIdPost } from './actions/actions'
-import NewPost from './NewPost'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { addIdPost, addNewPost } from './actions/actions'
+import { Button, Card, Col, Container, Modal, Row, Form } from 'react-bootstrap'
+import { useForm } from 'react-hook-form'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
+  const { register, handleSubmit } = useForm()
+  const onSubmit = (data: any) => {
+    dispatch(addNewPost(data))
+    console.log(data)
+  }
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <>
+      <Container style={{ margin: '20px' }}>
+        <Button
+          onClick={handleShow}
+          variant='primary'
+          style={{ marginRight: '5px' }}
+        >
+          Добавить новый пост
+        </Button>
+        <Button variant='danger'>Удалить первый пост</Button>
+      </Container>
       <Container style={{ margin: '0px' }} className={p.post}>
         {post.map((post: any) => (
           <Container>
@@ -73,10 +91,49 @@ export default function Posts({ post }: any) {
           </Container>
         ))}
       </Container>
-      <div></div>
-      <div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Изменение поста</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+              <Form.Label>Изменить номер поста</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Введите новый номер'
+                {...register('id', { required: true })}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group style={{ marginTop: '5px' }}>
+              <Form.Label>Изменить заголово поста</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Введите новый заголовок'
+                {...register('title', { required: true })}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group style={{ marginTop: '5px' }}>
+              <Form.Label>Изменить текст поста</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Введите новый текст'
+                {...register('body', { required: true })}
+              ></Form.Control>
+            </Form.Group>
+            <Button
+              style={{ marginTop: '5px', display: 'block' }}
+              variant='primary'
+              type='submit'
+            >
+              Изменить
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+      <Container>
         <Paginations />
-      </div>
+      </Container>
     </>
   )
 }
