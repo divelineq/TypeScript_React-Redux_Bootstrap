@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { fetchSinglePost } from './actions/asyncAction'
 import s from './SinglePost.module.css'
 import UpdatePost from './UpdatePost'
@@ -16,18 +17,38 @@ export default function SinglePost() {
 
   return (
     <div className={s.post}>
-      <Link className={s.link} to='/posts'>
-        Назад
+      <Link
+        style={{ fontWeight: 'bold', color: 'white', textDecoration: 'none' }}
+        to='/posts'
+      >
+        <Button style={{ width: '280px', margin: '12px' }}>Назад</Button>
       </Link>
-      <div className={s.postItem}>
-        <h4 className={s.h4}>Пост номер: {singlePost.id}</h4>
-        <h6 className={s.title}>{singlePost.title}</h6>
-        <p className={s.body}>{singlePost.body}</p>
-        <p className={s.userid}>Пользовательно номер: {singlePost.userId}</p>
-      </div>
-      <div>
-        <UpdatePost />
-      </div>
+
+      <Container>
+        <Row>
+          <Col>
+            <Card style={{ width: '280px' }}>
+              <Card.Body>
+                <Card.Title
+                  style={{
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    borderBottom: '1px solid black',
+                    minHeight: '40px',
+                  }}
+                >
+                  Пост номер: {singlePost.id}
+                </Card.Title>
+                <Card.Text style={{ textAlign: 'center', fontWeight: '600' }}>
+                  {singlePost.title}
+                </Card.Text>
+                <Card.Text>{singlePost.body}</Card.Text>
+                <Card.Text>Номер пользователя: {singlePost.userId}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
