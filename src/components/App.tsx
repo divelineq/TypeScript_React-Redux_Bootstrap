@@ -6,14 +6,13 @@ import Posts from './Posts'
 import { Routes, Route, Link } from 'react-router-dom'
 import StartPage from './StartPage'
 import SinglePost from './SinglePost'
-import NewPost from './NewPost'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
 function App() {
   const dispatch = useDispatch()
-  const post = useSelector((state: any) => state.post)
-  const postPage = useSelector((state: any) => state.postPage)
-  const postPerPage = useSelector((state: any) => state.postPerPage)
+  const post = useSelector((state: any) => state.post) // api
+  const postPage = useSelector((state: any) => state.postPage) // 1
+  const postPerPage = useSelector((state: any) => state.postPerPage) // 10
 
   useEffect(() => {
     dispatch(fetchPost())
