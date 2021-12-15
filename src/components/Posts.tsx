@@ -5,7 +5,7 @@ import Paginations from './Paginations'
 import { useDispatch } from 'react-redux'
 import { addIdPost } from './actions/actions'
 import NewPost from './NewPost'
-import { Button, Card, Col, Container, Row, ButtonGroup } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 
 export default function Posts({ post }: any) {
   const dispatch = useDispatch()
@@ -18,6 +18,7 @@ export default function Posts({ post }: any) {
             <Row>
               <Col>
                 <Card
+                  border='primary'
                   style={{
                     width: '280px',
                     minHeight: '400px',
@@ -47,21 +48,25 @@ export default function Posts({ post }: any) {
                       {post.body}
                     </Card.Text>
                   </Card.Body>
-                  <ButtonGroup
-                    style={{ padding: '5px' }}
-                    aria-label='Basic example'
+                  <Container
+                    style={{
+                      padding: '5px',
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                    }}
                   >
-                    <Button variant='primary'>
-                      <NavLink
-                        style={{ textDecoration: 'none', color: 'white' }}
-                        onClick={() => dispatch(addIdPost(post.id))}
-                        to={`/singlePost/${post.id}`}
-                      >
-                        Посмотреть
-                      </NavLink>
-                    </Button>
+                    <NavLink
+                      style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                      }}
+                      onClick={() => dispatch(addIdPost(post.id))}
+                      to={`/singlePost/${post.id}`}
+                    >
+                      <Button variant='primary'>Посмотреть</Button>
+                    </NavLink>
                     <Button variant='danger'>Удалить</Button>
-                  </ButtonGroup>
+                  </Container>
                 </Card>
               </Col>
             </Row>
@@ -71,9 +76,6 @@ export default function Posts({ post }: any) {
       <div></div>
       <div>
         <Paginations />
-      </div>
-      <div>
-        <NewPost />
       </div>
     </>
   )

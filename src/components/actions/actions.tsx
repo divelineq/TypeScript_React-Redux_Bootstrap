@@ -17,4 +17,3 @@ export const paginate = (postNumber: any) => ({
 })
 
 export const addNewPost = (payload: any) => ({ type: 'NEW_POST', payload })
-export const deletePost = () => ({ type: 'DELETE' })

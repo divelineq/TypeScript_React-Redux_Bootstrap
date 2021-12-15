@@ -33,8 +33,6 @@ export const reducer: any = (state = initialState, action: any) => {
       return { ...state, idPost: action.payload }
     case 'NEW_POST':
       return { ...state, post: [action.payload, ...state.post] }
-    case 'DELETE':
-      return {}
     default:
       return state
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import u from './UpdatePost.module.css'
 import { useDispatch } from 'react-redux'
-import { addNewPost, deletePost } from './actions/actions'
+import { addNewPost } from './actions/actions'
 import { Button } from 'react-bootstrap'
 
 export default function NewPost() {
@@ -11,6 +11,7 @@ export default function NewPost() {
 
   const onSubmit = (data: any) => {
     dispatch(addNewPost(data))
+    console.log(data)
   }
 
   return (
