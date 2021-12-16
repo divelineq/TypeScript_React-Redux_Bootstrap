@@ -4,17 +4,18 @@ export const ADD_POST = 'ADD_POST',
   UPDATE_SINGLE_POST = 'UPDATE_SINGLE_POST',
   ID_POST = 'ID_POST',
   NEW_POST = 'NEW_POST',
-  DELETE = 'DELETE'
+  DELETE = 'DELETE',
+  MODAL = 'MODAL'
 
 interface initialStateType {
-  post: Array<any>
-  payload?: any
+  post: Array<object>
   postPage: number
   postPerPage: number
-  singlePost?: any
-  updateSinglePost: any
-  idPost: any
-  newPost: any
+  singlePost: object
+  updateSinglePost: object
+  idPost: number
+  newPost: object
+  modal: boolean
 }
 
 export const initialState: initialStateType = {
@@ -25,6 +26,7 @@ export const initialState: initialStateType = {
   updateSinglePost: {},
   idPost: 0,
   newPost: {},
+  modal: false,
 }
 
 export const rootReducer = (state = initialState, action: any) => {
@@ -43,6 +45,8 @@ export const rootReducer = (state = initialState, action: any) => {
       return { ...state, post: [action.payload, ...state.post] }
     case DELETE:
       return { ...state, post: action.payload }
+    case MODAL:
+      return { ...state, modal: action.payload }
     default:
       return state
   }
