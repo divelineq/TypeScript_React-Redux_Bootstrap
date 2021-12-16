@@ -1,19 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import p from './Post.module.css'
 import Paginations from '../Pagination/Paginations'
 import { useDispatch, useSelector } from 'react-redux'
 import { addIdPost, deletePost, showModal } from '../redux/actions/actions'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
-
 import PostsModal from './PostsModal'
+import { StyledPostsContainer, StyledNewPostButton } from './Styled'
 
 export default function Posts({ currentPost }: any) {
   const dispatch = useDispatch()
   const post = useSelector((state: any) => state.post)
-
   const handleShow = () => dispatch(showModal(true))
-
   const deleteItem = (id: any) => {
     const indx = post.findIndex((el: any) => el.id === id)
     const before = post.slice(0, indx)
@@ -24,63 +21,24 @@ export default function Posts({ currentPost }: any) {
 
   return (
     <>
-      <Container style={{ margin: '20px' }}>
-        <Button
-          onClick={handleShow}
-          variant='primary'
-          style={{ marginRight: '5px' }}
-        >
+      <StyledNewPostButton>
+        <Button onClick={handleShow} variant='primary'>
           Добавить новый пост
         </Button>
-      </Container>
-      <Container style={{ margin: '0px' }} className={p.post}>
+      </StyledNewPostButton>
+      <StyledPostsContainer>
         {currentPost.map((post: any) => (
           <Container>
             <Row>
               <Col>
-                <Card
-                  border='primary'
-                  style={{
-                    width: '280px',
-                    minHeight: '400px',
-                  }}
-                >
+                <Card border='primary'>
                   <Card.Body>
-                    <Card.Title
-                      style={{
-                        textAlign: 'center',
-                        fontWeight: 'bold',
-                        borderBottom: '1px solid black',
-                        minHeight: '40px',
-                      }}
-                    >
-                      Пост номер: {post.id}
-                    </Card.Title>
-                    <Card.Text
-                      style={{
-                        textAlign: 'center',
-                        fontWeight: '600',
-                        color: 'black',
-                      }}
-                    >
-                      {post.title}
-                    </Card.Text>
-                    <Card.Text style={{ color: 'black' }}>
-                      {post.body}
-                    </Card.Text>
+                    <Card.Title>Пост номер: {post.id}</Card.Title>
+                    <Card.Text className='title'>{post.title}</Card.Text>
+                    <Card.Text>{post.body}</Card.Text>
                   </Card.Body>
-                  <Container
-                    style={{
-                      padding: '5px',
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                    }}
-                  >
+                  <Container className='look'>
                     <NavLink
-                      style={{
-                        textDecoration: 'none',
-                        color: 'white',
-                      }}
                       onClick={() => dispatch(addIdPost(post.id))}
                       to={`/singlePost/${post.id}`}
                     >
@@ -98,7 +56,7 @@ export default function Posts({ currentPost }: any) {
             </Row>
           </Container>
         ))}
-      </Container>
+      </StyledPostsContainer>
       <Container>
         <PostsModal />
       </Container>

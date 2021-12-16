@@ -1,10 +1,17 @@
 import React from 'react'
-import pag from './Paginations.module.css'
 import Pagination from 'react-bootstrap/Pagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { paginate } from './../redux/actions/actions'
+import styled from 'styled-components'
 
 const Paginations = () => {
+  const StyledPagination = styled.div`
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+  `
+
   const dispatch = useDispatch()
   const post = useSelector((state: any) => state.post)
   const postPage = useSelector((state: any) => state.postPage)
@@ -27,9 +34,9 @@ const Paginations = () => {
     )
   }
   return (
-    <div className={pag.pagination}>
+    <StyledPagination>
       <Pagination>{items}</Pagination>
-    </div>
+    </StyledPagination>
   )
 }
 

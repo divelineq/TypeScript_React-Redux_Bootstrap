@@ -5,7 +5,8 @@ export const ADD_POST = 'ADD_POST',
   ID_POST = 'ID_POST',
   NEW_POST = 'NEW_POST',
   DELETE = 'DELETE',
-  MODAL = 'MODAL'
+  MODAL = 'MODAL',
+  CAROUSEL_INDEX = 'CAROUSEL_INDEX'
 
 interface initialStateType {
   post: Array<object>
@@ -16,6 +17,7 @@ interface initialStateType {
   idPost: number
   newPost: object
   modal: boolean
+  carouselIndex: number
 }
 
 export const initialState: initialStateType = {
@@ -27,6 +29,7 @@ export const initialState: initialStateType = {
   idPost: 0,
   newPost: {},
   modal: false,
+  carouselIndex: 0,
 }
 
 export const rootReducer = (state = initialState, action: any) => {
@@ -47,6 +50,8 @@ export const rootReducer = (state = initialState, action: any) => {
       return { ...state, post: action.payload }
     case MODAL:
       return { ...state, modal: action.payload }
+    case CAROUSEL_INDEX:
+      return { ...state, carouselIndex: action.pauload }
     default:
       return state
   }

@@ -1,26 +1,30 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import a from './App.module.css'
 import Posts from '../Posts/Posts'
 import { Routes, Route, Link } from 'react-router-dom'
 import StartPage from '../Home/StartPage'
 import SinglePost from '../SinglePost/SinglePost'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { fetchPost } from './../redux/actions/asyncAction'
+import styled from 'styled-components'
 
 function App() {
+  const StyledLink = styled(Nav.Link)`
+    display: flex;
+    a {
+      text-decoration: none;
+    }
+  `
   const dispatch = useDispatch()
   const post = useSelector((state: any) => state.post) // api
   const postPage = useSelector((state: any) => state.postPage) // 1
   const postPerPage = useSelector((state: any) => state.postPerPage) // 10
-
-  useEffect(() => {
-    dispatch(fetchPost())
-  }, [])
-
   const lastPostIndex = postPage * postPerPage
   const firstPostIndex = lastPostIndex - postPerPage
   const currentPost = post.slice(firstPostIndex, lastPostIndex)
+  useEffect(() => {
+    dispatch(fetchPost())
+  }, [])
 
   return (
     <div>
@@ -30,16 +34,14 @@ function App() {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link>
-                <Link className={a.start} to='/'>
-                  Главная
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link className={a.posts} to='/posts'>
-                  Показать все посты
-                </Link>
-              </Nav.Link>
+              <StyledLink>
+                <Nav.Link>
+                  <Link to='/'>Главная</Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to='/posts'>Показать все посты</Link>
+                </Nav.Link>
+              </StyledLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
