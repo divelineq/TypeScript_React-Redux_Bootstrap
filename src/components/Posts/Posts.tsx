@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import Paginations from '../Pagination/Paginations'
+import PostPaginations from '../Pagination/PostPaginations'
 import { useDispatch, useSelector } from 'react-redux'
 import { addIdPost, deletePost, showModal } from '../redux/actions/actions'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import PostsModal from './PostsModal'
 import { StyledPostsContainer, StyledNewPostButton } from './Styled'
+import { fetchPost } from '../redux/actions/asyncAction'
 
-export default function Posts({ currentPost }: any) {
+export default function Posts() {
   const dispatch = useDispatch()
-  const post = useSelector((state: any) => state.post)
+  useEffect(() => {
+    dispatch(fetchPost())
+  }, [])
+  const post = useSelector((state: any) => state.post) // api
+  const postPage = useSelector((state: any) => state.postPage) // 1
+  const postPerPage = useSelector((state: any) => state.postPerPage) // 10
+  const lastPostIndex = postPage * postPerPage
+  const firstPostIndex = lastPostIndex - postPerPage
+  const currentPost = post.slice(firstPostIndex, lastPostIndex)
   const handleShow = () => dispatch(showModal(true))
   const deleteItem = (id: any) => {
     const indx = post.findIndex((el: any) => el.id === id)
@@ -61,7 +70,7 @@ export default function Posts({ currentPost }: any) {
         <PostsModal />
       </Container>
       <Container>
-        <Paginations />
+        <PostPaginations />
       </Container>
     </>
   )

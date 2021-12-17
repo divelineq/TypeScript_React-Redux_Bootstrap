@@ -1,10 +1,10 @@
 import React from 'react'
 import Pagination from 'react-bootstrap/Pagination'
 import { useDispatch, useSelector } from 'react-redux'
-import { paginate } from './../redux/actions/actions'
+import { paginate } from '../redux/actions/actions'
 import styled from 'styled-components'
 
-const Paginations = () => {
+const PostPaginations = () => {
   const StyledPagination = styled.div`
     display: flex;
     text-align: center;
@@ -40,4 +40,4 @@ const Paginations = () => {
   )
 }
 
-export default Paginations
+export default PostPaginations

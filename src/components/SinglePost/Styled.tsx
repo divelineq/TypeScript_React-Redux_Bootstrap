@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap'
+import { Container, Card } from 'react-bootstrap'
 import styled from 'styled-components'
 
 export const StyledSinglePostContainer = styled(Container)`
@@ -26,5 +26,32 @@ export const StyledSinglePostContainer = styled(Container)`
   }
   .card {
     width: 280px;
+  }
+  .comments {
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+`
+
+export const CardContainer = styled(Card)`
+  .card-img-top {
+    height: 250px;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+  .like {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    margin-right: 15px;
+  }
+  .noLike {
+    background-color: red;
+    margin-right: 15px;
   }
 `

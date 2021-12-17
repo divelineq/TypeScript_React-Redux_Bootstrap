@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 import Posts from '../Posts/Posts'
 import { Routes, Route, Link } from 'react-router-dom'
 import StartPage from '../Home/StartPage'
 import SinglePost from '../SinglePost/SinglePost'
 import { Container, Nav, Navbar } from 'react-bootstrap'
-import { fetchPost } from './../redux/actions/asyncAction'
 import styled from 'styled-components'
+import SinglePhoto from '../SinglePost/SinglePhoto'
 
 function App() {
   const StyledLink = styled(Nav.Link)`
@@ -15,17 +14,6 @@ function App() {
       text-decoration: none;
     }
   `
-  const dispatch = useDispatch()
-  const post = useSelector((state: any) => state.post) // api
-  const postPage = useSelector((state: any) => state.postPage) // 1
-  const postPerPage = useSelector((state: any) => state.postPerPage) // 10
-  const lastPostIndex = postPage * postPerPage
-  const firstPostIndex = lastPostIndex - postPerPage
-  const currentPost = post.slice(firstPostIndex, lastPostIndex)
-  useEffect(() => {
-    dispatch(fetchPost())
-  }, [])
-
   return (
     <div>
       <Navbar bg='dark' expand='lg' variant='dark'>
@@ -49,8 +37,9 @@ function App() {
       <div>
         <Routes>
           <Route path='/' element={<StartPage />} />
-          <Route path='/posts' element={<Posts currentPost={currentPost} />} />
+          <Route path='/posts' element={<Posts />} />
           <Route path={`/singlePost/:id`} element={<SinglePost />} />
+          <Route path={`/singlePhoto/:id`} element={<SinglePhoto />} />
         </Routes>
       </div>
     </div>
